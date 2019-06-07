@@ -2,14 +2,12 @@ var speakButton = document.getElementById("speak")
 var answerText = document.getElementById("answer")
 
 var synchWord;
-var firstSpoke = false;
 var points = 0;
 
 socket.on('synchWord', function(word){
   answerText.value="";
-  synchWord = word.trim();
-  if (synchWord && !firstSpoke){
-    firstSpoke = true;
+  synchWord = word.toLowerCase().trim();
+  if (synchWord){
     var msg = new SpeechSynthesisUtterance()
     msg.rate = 1.2
     msg.pitch = 1
@@ -20,9 +18,8 @@ socket.on('synchWord', function(word){
 
 answerText.addEventListener("keypress", function(event){
   if(event.which==13 && answerText.value != "" && synchWord){
-    if(synchWord == answerText.value.trim()){
+    if(synchWord == answerText.value.toLowerCase().trim()){
       synchWord = "";
-      firstSpoke = false;
       socket.emit('requestWord', roomID);
       points++;
       document.getElementById("points").innerHTML = "Points: " + points;

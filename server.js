@@ -28,10 +28,6 @@ app.get('/game/:tagId', function(req, res){
     res.render('game', {id: req.params.tagId})
 })
 
-app.get('/getword', function(req, res){
-    res.send(lines[Math.floor(Math.random()*lines.length)]);
-})
-
 io.on('connection', function(socket){
     var room = socket.handshake['query']['room']
     socket.join(room)
@@ -40,17 +36,14 @@ io.on('connection', function(socket){
     if(!(room in roomDict)){
         roomDict[room] = lines[Math.floor(Math.random()*lines.length)];
     }
+    io.to(socket.id).emit('synchWord', roomDict[room]);
 
-    io.to(room).emit('synchWord', roomDict[room]);
-
-    socket.on('requestWord', function(room){
-        roomDict[room] = lines[Math.floor(Math.random()*lines.length)];
-        io.to(room).emit('synchWord', roomDict[room]);
+    socket.on('requestWord', function(roomID){
+        roomDict[roomID] = lines[Math.floor(Math.random()*lines.length)];
+        io.to(roomID).emit('synchWord', roomDict[roomID]);
     })
 });   
-
 
 http.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
-

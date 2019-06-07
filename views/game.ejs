@@ -7,7 +7,7 @@
     <title>Spelling Bee Game</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-    <script src="/javascript/socket.io.js" type="application/javascript"></script>s
+    <script src="/javascript/socket.io.js" type="application/javascript"></script>
 
 </head>
   
@@ -29,7 +29,7 @@
 
     <script>
         var roomID = <%- JSON.stringify(id) %>
-        var socket = io.connect("http://localhost:3000", {query: "room="+roomID});
+        var socket = io.connect({query: "room="+roomID});
 
     </script>
 
