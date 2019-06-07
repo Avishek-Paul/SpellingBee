@@ -1,0 +1,16 @@
+{
+  "name": "spellinggame",
+  "version": "1.0.0",
+  "description": "Online Spelling bee",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Avishek Paul",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  }
+}

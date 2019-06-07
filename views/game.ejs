@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Spelling Bee Game</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <script src="/javascript/socket.io.js" type="application/javascript"></script>s
+
+</head>
+  
+<body>
+
+    <div class="gameContainer">
+        
+        <h2> Spelling Bee Game </h2>
+        <p> Room ID: <%= id %> </p>
+        <p> Spell the word correctly to move on. </p>
+
+        <div class="game">
+            <div id="points">Points: 0</div> 
+            <img id="speak" src="/media/speaker.png" width="100" height="100"> 
+            <p> <input type="text" name="answer" id="answer"> </p>
+        </div>
+
+    </div>
+
+    <script>
+        var roomID = <%- JSON.stringify(id) %>
+        var socket = io.connect("http://localhost:3000", {query: "room="+roomID});
+
+    </script>
+
+    <script src="/javascript/roomLogic.js" type="application/javascript"></script>
+
+</body>
+</html>     

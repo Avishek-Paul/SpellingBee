@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Spelling Bee Game</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <script src="/javascript/socket.io.js"></script>
+
+</head>
+  
+<body>
+
+    <div class="gameContainer">
+        
+        <h2> Spelling Bee Game </h2>
+        <p> Spell the word correctly to move on. </p>
+
+        <div class="game">
+                <img id="speak" src="/media/speaker.png" width="100" height="100"> 
+                <p> <input type="text" name="answer"> </p>
+        </div>
+
+    </div>
+
+    <!-- <script>
+        var socket = io();
+    </script> -->
+    <script src="javascript/roomLogic.js"></script>
+
+</body>
+</html>
