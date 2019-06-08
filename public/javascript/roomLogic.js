@@ -18,18 +18,24 @@ socket.on('synchWord', function(word){
 
 socket.on('playerList', (playerNames) => {
   var playerList = document.getElementById("list");
-  var selfText = document.getElementById("self").innerHTML;
-  while ( playerList.firstChild ) {
-    playerList.removeChild( playerList.firstChild );
-  }
-  playerList.innerHTML = "<li id=\"self\">" + selfText + "</li>";
-  for(var i in playerNames){
+  playerList.innerHTML = "";
+
+  var li = document.createElement("li");
+  li.innerHTML = (username + ' (you)').italics()
+  playerList.appendChild(li);
+
+  var uniquePlayerNames = playerNames.filter(function(item, index){
+    return playerNames.indexOf(item) >= index;
+  });
+
+  for(var i in uniquePlayerNames){
     var name = playerNames[i];
     if(name == username) continue;
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(name));
     playerList.appendChild(li)  
   }
+
 });
 
 answerText.addEventListener("keypress", function(event){
