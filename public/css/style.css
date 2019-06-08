@@ -18,3 +18,8 @@ body {
 #points {
     text-align: left;
 }
+
+.playerList {
+    border: 1px solid #ffffff;
+    margin-top: 10px;
+}

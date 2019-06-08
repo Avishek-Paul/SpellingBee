@@ -25,13 +25,25 @@
             <p> <input type="text" name="answer" id="answer"> </p>
         </div>
 
+        <script> //here such that the playerlist can be built
+            var roomID = <%- JSON.stringify(id) %>
+            var username = <%- JSON.stringify(username) %>
+            const socket = io({
+                query: {
+                    room: roomID,
+                    username: username
+                }
+            });
+        </script>
+
+        <div class="playerList">
+            <b> Players </b>
+            <ul id="list">
+                <li id="self"> <i> <%= username %> (you) </i> </li>
+            </ul>
+        </div>
+
     </div>
-
-    <script>
-        var roomID = <%- JSON.stringify(id) %>
-        var socket = io.connect({query: "room="+roomID});
-
-    </script>
 
     <script src="/javascript/roomLogic.js" type="application/javascript"></script>
 

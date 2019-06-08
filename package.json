@@ -9,8 +9,10 @@
   "author": "Avishek Paul",
   "license": "ISC",
   "dependencies": {
+    "client-sessions": "^0.8.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "socketio-auth": "^0.1.1"
   }
 }
